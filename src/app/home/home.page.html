@@ -3,10 +3,13 @@
     <ion-title>
       G00227258
     </ion-title>
+    <ion-button slot="end" [routerLink]="['/settings']">
+        <ion-icon name="settings-outline"></ion-icon> 
+      </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-input label="Enter Country" placeholder="Country Name" [(ngModel)]="countryName"></ion-input>
-  <ion-button (click)="openCountries()">Search</ion-button> 
+  <ion-button expand="block" (click)="openCountries()">Search</ion-button> 
 </ion-content>
