@@ -5,9 +5,23 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ul>
-    <li>Metric</li>
-    <li>Standard</li>
-    <li>Imperial</li>
-  </ul>
+ <ion-list>
+  <ion-radio-group [(ngModel)]="unitSelected" (ionChange)="saveSelected()">
+
+  <ion-item>
+    <ion-label>Metric</ion-label>
+    <ion-radio slot="start" value="metric"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Standard</ion-label>
+    <ion-radio slot="start" value="standard"></ion-radio>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Imperial</ion-label>
+    <ion-radio slot="start" value="imperial"></ion-radio>
+  </ion-item>
+</ion-radio-group>
+ </ion-list>
 </ion-content>
