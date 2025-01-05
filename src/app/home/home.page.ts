@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonInput, IonButton, IonIcon } from '@ionic/angular/standalone';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { MyStorageService } from '../services/storage.service.spec';
 
 @Component({
   selector: 'app-home',
@@ -12,11 +13,12 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   countryName: string = ""
-  constructor(private router: Router) {
+  constructor(private router: Router, private storageService: MyStorageService) {
   }
 
-  openCountries() {
+ async openCountries() {
     if (this.countryName.trim()) {
+      await this.storageService.set('kw', this.countryName);
       this.router.navigate(["/countries"])
     }
 
