@@ -7,5 +7,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
- <h1>This is home.page.html</h1>
+  <ion-input label="Enter Country" placeholder="Country Name" [(ngModel)]="countryName"></ion-input>
+  <ion-button (click)="openCountries()">Search</ion-button> 
 </ion-content>
