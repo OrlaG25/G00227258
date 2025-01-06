@@ -20,6 +20,6 @@ export class MyStorageService {
   }
 
   async get(key:string) {
-    return await this.storage.get(key);
+    return await this.storage.get(key); 
   }
 }

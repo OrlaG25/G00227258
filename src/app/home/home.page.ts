@@ -12,14 +12,14 @@ import { MyStorageService } from '../services/storage.service.spec';
   imports: [IonInput, IonHeader, IonToolbar, IonTitle, IonContent, FormsModule, IonButton, IonIcon, RouterModule],
 })
 export class HomePage {
-  countryName: string = ""
+  countryName: string = "" //Stores entered country name
   constructor(private router: Router, private storageService: MyStorageService) {
   }
 
  async openCountries() {
-    if (this.countryName.trim()) {
-      await this.storageService.set('kw', this.countryName);
-      this.router.navigate(["/countries"])
+    if (this.countryName.trim()) { //Insures input is not blank
+      await this.storageService.set('kw', this.countryName); //Stores country name to ionic storage
+      this.router.navigate(["/countries"]) //Navigates to the countries page
     }
 
   }

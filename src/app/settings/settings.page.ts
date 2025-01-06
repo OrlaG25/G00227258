@@ -11,18 +11,18 @@ import { MyStorageService } from '../services/storage.service.spec';
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonList, IonItem, IonRadio, IonRadioGroup,IonLabel]
 })
 export class SettingsPage implements OnInit {
-  unitSelected: string ='metric';
+  unitSelected: string ='metric'; //Store the unit of measure with metric as default
 
   constructor(private mss: MyStorageService) { }
 
   async ngOnInit() {
-    const savedUnit = await this.mss.get('selectedUnit');
+    const savedUnit = await this.mss.get('selectedUnit'); //Retrive stored unit from storage
     if (savedUnit) {
       this.unitSelected = savedUnit;
     }
     }
-    async saveSelected() {
-    await this.mss.set("selectUnit", this.unitSelected);
+    async saveSelected() { 
+    await this.mss.set("selectUnit", this.unitSelected); //Save selected unit to storage
   }
 
 }

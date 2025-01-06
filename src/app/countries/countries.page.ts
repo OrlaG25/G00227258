@@ -18,8 +18,8 @@ interface HttpOptions {
 })
 export class CountriesPage implements OnInit {
 
-  keyword: string ="";
-  countryInfo:any[] = [];
+  keyword: string =""; //Store keywork search
+  countryInfo:any[] = []; //Store country info
   options: HttpOptions = {
     url: 'https://restcountries.com/v3.1/name/'
   };
@@ -30,24 +30,24 @@ export class CountriesPage implements OnInit {
     this.getKW();
   }
    async getKW() { 
-    this.keyword = await this.mss.get('kw');
+    this.keyword = await this.mss.get('kw'); //Retrive the keywork from ionic storage
 
-    const url = this.options.url + this.keyword;
+    const url = this.options.url + this.keyword; //API URL
 
     try {
-      const result = await this.mhs.get({ url });
-    this.countryInfo = result;
+      const result = await this.mhs.get({ url }); //Fetch country data
+    this.countryInfo = result; //Store fetched country data
     console.log(JSON.stringify(this.countryInfo));
   } catch (error) {
     console.error('Error unabe to retrive data', error);
-    this.countryInfo = [];
+    this.countryInfo = []; //Info reset if there is an error
   }
 }
 
 openNews(countryName: String) {
-  this.router.navigate(['/news'], {state: { countryName} });
+  this.router.navigate(['/news'], {state: { countryName} }); //Navigate to the selected countries news page
 }
 openWeather(countryName: String) {
-  this.router.navigate(['/weather'], {state: { countryName }});
+  this.router.navigate(['/weather'], {state: { countryName }}); //Navigate to the selected countries weather page
 }
 }
