@@ -45,9 +45,9 @@ export class CountriesPage implements OnInit {
 }
 
 openNews(countryName: String) {
-  this.router.navigate(['/news, countryName']);
+  this.router.navigate(['/news'], {state: { countryCode} });
 }
 openWeather(countryName: String) {
-  this.router.navigate(['/weather, countryName']);
+  this.router.navigate(['/weather'], {state: { countryCode }});
 }
 }
