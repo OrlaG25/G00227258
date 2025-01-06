@@ -25,9 +25,18 @@ export class NewsPage implements OnInit {
 
   constructor(private router: Router, private mhs: MyHttpService) {}
 
-  ngOnInit() {
-    // TODO: Call fetchNews after setting the country code
-  }
+  async ngOnInit() {
+    
+      const navigation = this.router.getCurrentNavigation();
+      if (navigation?.extras.state) {
+        this.countryCode = navigation.extras.state['countryCode'];
+        console.log('Country Code:', this.countryCode);
+        await this.fetchNews();
+      } else {
+        console.error('No country code found');
+        this.router.navigate(['/countries']);
+      }
+    }
 
   async fetchNews() {
     const url = this.options.url + this.countryCode;
